@@ -11,28 +11,27 @@ export default new Vuex.Store({
           { text: "Play around in JSFiddle", done: true },
           { text: "Build something awesome", done: true }
         ],
-        todo: {}
+        todo: {},
+        showModal: false
     },
-    actions: {
-        addNote({commit}, note) {
-            commit('ADD_NOTE', note)
-        }
-    },
+   
     mutations: {
-        ADD_NOTE(state, note) {
-            state.notes.push(note)
-        },
         setTodo (state, payload) {
             state.todo = payload
-        }
+        },
+        setShowModal (state, payload) {
+            state.showModal = payload
+        },
     },
     getters: {
         notes(state) {
             return state.notes
         },
         getTodo(state) {
-            console.log(state.todo)
             return state.todo
+        },
+        getShowModal(state) {
+            return state.showModal
         }
     }
 })
