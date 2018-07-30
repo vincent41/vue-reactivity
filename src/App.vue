@@ -36,6 +36,7 @@ export default {
   computed: {
   	todos () {
   		return this.$store.getters.getTodos
+
   	},
     showModal () {
       return this.$store.getters.getShowModal
