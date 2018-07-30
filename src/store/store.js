@@ -5,34 +5,33 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        notes: [
+        todos: [
           { text: "Learn JavaScript", done: false },
           { text: "Voll gut Vue", done: false },
           { text: "Play around in JSFiddle", done: true },
           { text: "Build something awesome", done: true }
         ],
-        todo: {}
+        todo: {},
+        showModal: false
     },
-    actions: {
-        addNote({commit}, note) {
-            commit('ADD_NOTE', note)
-        }
-    },
+   
     mutations: {
-        ADD_NOTE(state, note) {
-            state.notes.push(note)
-        },
         setTodo (state, payload) {
             state.todo = payload
-        }
+        },
+        setShowModal (state, payload) {
+            state.showModal = payload
+        },
     },
     getters: {
-        notes(state) {
-            return state.notes
+        getTodos (state) {
+            return state.todos
         },
         getTodo(state) {
-            console.log(state.todo)
             return state.todo
+        },
+        getShowModal(state) {
+            return state.showModal
         }
     }
 })

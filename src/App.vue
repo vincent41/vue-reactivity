@@ -31,14 +31,15 @@ export default {
   data () {
     return {
       msg: 'Welcome to Reactivity',
-      showModal: false
-
     }
   },
   computed: {
   	todos () {
-  		return this.$store.getters.notes
-  	}
+  		return this.$store.getters.getTodos
+  	},
+    showModal () {
+      return this.$store.getters.getShowModal
+    }
   },
   methods: {
   	toggle (todo) {
@@ -49,7 +50,7 @@ export default {
       console.log(todo, index)        //Reactivity          <--------------
       console.log(this.todos[index])  //Reactivity          <--------------
       this.$store.commit('setTodo', todo)
-      this.showModal = !this.showModal 
+      this.$store.commit('setShowModal', true)
     }
 
   },

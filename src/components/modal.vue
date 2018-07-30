@@ -3,9 +3,9 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div>
-          <input type="text" v-model="todo.text">
+          <input type="text" id="text" v-model="todo.text">
           <input type="checkbox" v-model="todo.done">
-          <button class="modal-default-button" @click="$emit('close')">OK</button>
+          <button class="modal-default-button" @click="close">OK</button>
         </div>
       </div>
     </div>
@@ -18,12 +18,17 @@
       todo (){
         return this.$store.getters.getTodo
       }
+    },
+    methods: {
+      close(){
+        this.$store.commit('setShowModal', false)
+      }
     }
   }
 </script>
 
 <style scoped>
-input {
+#text {
   width: 70%;
 }
 .modal-mask {
