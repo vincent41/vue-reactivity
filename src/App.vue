@@ -6,8 +6,7 @@
     <li v-for="(todo, index) in todos">
       <label>
         <input type="checkbox"
-          v-on:change="toggle(todo, index)"
-          v-bind:checked="todo.done">
+          v-model="todo.done">
 
         <del v-if="todo.done">
           {{ todo.text }}
@@ -36,19 +35,16 @@ export default {
   computed: {
   	todos () {
   		return this.$store.getters.getTodos
+
   	},
     showModal () {
       return this.$store.getters.getShowModal
     }
   },
   methods: {
-  	toggle (todo) {
-    	todo.done = !todo.done
-    },
-    
     openModal (todo, index) {
-      console.log(todo, index)        //Reactivity          <--------------
-      console.log(this.todos[index])  //Reactivity          <--------------
+      console.log(todo, index)                  //Reactivity          <--------------
+      console.log(this.todos[index])            //Reactivity          <--------------
       this.$store.commit('setTodo', todo)
       this.$store.commit('setShowModal', true)
     }
